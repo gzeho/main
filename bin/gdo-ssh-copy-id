@@ -1,0 +1,13 @@
+#!/bin/bash
+
+ID_RSA_PUB="$HOME/.ssh/id_rsa.pub"
+
+[ -z $1 ] && echo "Target host is missing!" && exit 1
+
+echo "Copying public RSA key to remote host $1..."
+if [ -f $ID_RSA_PUB ]; then
+   ssh-copy-id -i $ID_RSA_PUB $1
+   echo "Done."
+else
+   echo "Key does not exist! Use ssh-keygen to create it."
+fi

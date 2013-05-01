@@ -1,0 +1,22 @@
+#!/bin/bash
+
+# Output redirection for whole script
+G_GENERALLOG="$HOME/generallog"
+exec >> $G_GENERALLOG 2>&1
+
+# Load sybase environment variables
+G_SYBASE_SH=/opt/sybase-15/SYBASE.sh
+if [ -f $G_SYBASE_SH ]; then
+   source $G_SYBASE_SH
+fi
+
+PATH=$HOME/bin:$PATH
+
+G_SCRIPT_NAME=`basename $0`
+G_TIMESTAMP=`date`
+
+# Log action
+echo "[$G_TIMESTAMP] $G_SCRIPT_NAME: Running cron command '$@'"
+
+# Execute command passed as argument
+$@

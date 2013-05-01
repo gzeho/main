@@ -1,0 +1,6 @@
+2013-05-01
+   * Added content:
+      bin/gdo-cron-cmd-wrapper
+      bin/gdo-ssh-copy-id
+      CHANGES
+      vimrc
